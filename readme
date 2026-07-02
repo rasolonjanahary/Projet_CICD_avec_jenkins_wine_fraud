@@ -2,6 +2,12 @@ Pour faire fonctionner sur votre PC vous devez avoir docker et docker compose
 
 1) clonner le projet
 2) Changer de repertoire 
+
+ ==> cd Projet_CICD_avec_jenkins_wine_fraud
+
+
 3) Lancer le build avec docker compose
+ ==> docker compose up -d
+ 
 
 Bonne essai!!!
