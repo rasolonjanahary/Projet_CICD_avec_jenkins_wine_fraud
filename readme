@@ -5,7 +5,3 @@ mlflow ui
 pour lancer fastapi:
 
 uvicorn app:app
-
-REGISTRY = "192.168.88.50"
-
-PROJECT = "projet_cicd"
