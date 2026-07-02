@@ -2,11 +2,37 @@ services:
   wine-fraud-app:
     build: .
     image: wine_fraud_image
-    container_name: wine_fraud_container
+    container_name: wine-fraud-app
     ports:
       - "8000:8000"
     restart: unless-stopped
+    networks:
+      - monitoring_wine
 
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus_wine
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - monitoring_wine
+    depends_on:
+      - wine-fraud-app
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana_wine
+    ports:
+     - "3000:3000"
+    volumes:
+      - grafana_storage_wine:/var/lib/grafana
+    networks:
+      - monitoring_wine
+    depends_on:
+      - prometheus
+  
   mlflow-ui:
     build: .
     image: wine_fraud_flow
@@ -17,3 +43,10 @@ services:
     command: >
       sh -c "mlflow db upgrade sqlite:///mlflow.db && 
             mlflow ui --host 0.0.0.0 --port 5000"
+
+volumes:
+  grafana_storage_wine:
+
+networks:
+  monitoring_wine:
+    driver: bridge

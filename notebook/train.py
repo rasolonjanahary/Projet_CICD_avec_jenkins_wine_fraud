@@ -10,11 +10,15 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.compose import ColumnTransformer
 from mlflow.data.pandas_dataset import from_pandas
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DATA_PATH = os.path.join(BASE_DIR,"..", "data", "wine_equilibre.csv")
 
 mlflow.set_experiment("wine")
 
-df = pd.read_csv("data/wine_equilibre.csv")
-#df = pd.read_csv("../data/wine_equilibre.csv")
+df = pd.read_csv(DATA_PATH)
 
 
 df = df.rename(columns={

@@ -1,11 +1,14 @@
 import pandas as pd
 import joblib
+import os
 
-model = joblib.load("models/model_dc.pkl")
-#model = joblib.load("../models/model_dc.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-sc = joblib.load("models/scaler1.pkl")
-#sc = joblib.load("../models/scaler1.pkl")
+MODEL_PATH = os.path.join(BASE_DIR,"..", "models", "model_dc.pkl")
+SCALER_PATH = os.path.join(BASE_DIR,"..", "models", "scaler1.pkl")
+
+model = joblib.load(MODEL_PATH)
+sc = joblib.load(SCALER_PATH)
 
 
 dic = {

@@ -7,3 +7,5 @@ uvicorn
 joblib
 mlflow
 python-multipart
+prometheus-client 
+prometheus-fastapi-instrumentator
