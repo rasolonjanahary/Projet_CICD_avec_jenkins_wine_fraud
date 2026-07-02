@@ -1,7 +1,7 @@
-pour lancer mlflow:
+Pour faire fonctionner sur votre PC vous devez avoir docker et docker compose
 
-mlflow ui
+1) clonner le projet
+2) Changer de repertoire 
+3) Lancer le build avec docker compose
 
-pour lancer fastapi:
-
-uvicorn app:app
+Bonne essai!!!
